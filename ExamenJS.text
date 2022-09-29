@@ -1,0 +1,78 @@
+1.- Dado un string cree una función reverse que invierta el orden de sus caracteres
+Ejemplo: “Hello world” = “dlrow olleH”. No puede utilizarse desestructurar ni recursión. 
+
+Let text=”Hola mundo”;
+reversa=” “;
+for(letter of text){
+
+	reversa=letter+”reversa”
+}
+
+2.- Dado un string cree una función que invierta el orden de sus caracteres. Debe utilizar una desestructuración en el proceso.
+
+Function reverse(text){
+	
+	return [...text].reverse().join(“”);
+}
+
+
+3.- Dado el String invierta el orden de sus caracteres recursivamente
+
+function reverse(text){
+    if(text===""){ return ""}
+    let subText=text.substring(1);
+    return reverse(subText)+text.charAt(0);
+}
+
+4.- Dado un String invierta el orden de sus caracteres sin utilizar un nuevo
+string (Realice las modificaciones en el propio string).
+
+R= Los string en JavaScript son inmutables
+
+5.- Construya una función palindrome, la cual dada un String indique si es un 
+palindrome o no 
+
+    function clearText(myText){
+        return myText.toLowerCase().split(" ").join("").split(",").join("");
+    }
+    function isPalindrome(text){
+        let myClearText=clearText(text);
+        return myClearText=== reverse(myClearText);
+    }
+6.- Intenta invertir las palabras de una frase, pero cada palabra debe mantenerse
+en el lugar.
+ 
+    function reverseTexLast(text){
+       myTextArray=text.split(" ");
+       return myTextArray.map(word=>reverse(word));
+    }
+
+Entrevista
+
+ 1.-Implemente un algoritmo capaz de combinar dos array ordenados, 
+    obteniendo un array ordenado
+    function merge(arr1,arr2){
+        let combinedArray=[];
+        while(arr1.length && arr2.length)
+        {
+            let firstElement;
+            if(arr1[0]<arr2[0])
+            {
+                firstElement=arr1.shift();            
+            }else{
+                firstElement=arr2.shift();
+            }
+            combinedArray.push(firstElement);
+        }
+        combinedArray=combinedArray.concat(arr1).concat(arr2);
+        return combinedArray;
+    }
+
+
+    function mergesort(arr)
+    {
+        let mediumArray = arr.length/2;
+        let leftArray=arr.splice(0,mediumArray);
+        let rightArray=arr;
+        return merge(leftArray,rightArray);
+   }
